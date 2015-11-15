@@ -184,7 +184,9 @@ public class CardContainer extends AdapterView<ListAdapter> {
     }
 
     private float getDisorderedRotation() {
-        return (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS);
+        // 最初の自動配置時の傾き
+//        return (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS);
+        return (float) Math.toDegrees(0);
     }
 
     @Override
@@ -309,7 +311,9 @@ public class CardContainer extends AdapterView<ListAdapter> {
                 ValueAnimator animator = ObjectAnimator.ofPropertyValuesHolder(mTopCard,
                         PropertyValuesHolder.ofFloat("translationX", 0),
                         PropertyValuesHolder.ofFloat("translationY", 0),
-                        PropertyValuesHolder.ofFloat("rotation", (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS)),
+                        // 一度dragしたカードから手を離してstackに戻ってきた時の傾き
+//                        PropertyValuesHolder.ofFloat("rotation", (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS)),
+                        PropertyValuesHolder.ofFloat("rotation", (float) Math.toDegrees(0)),
                         PropertyValuesHolder.ofFloat("pivotX", mTopCard.getWidth() / 2.f),
                         PropertyValuesHolder.ofFloat("pivotY", mTopCard.getHeight() / 2.f)
                 ).setDuration(250);
