@@ -143,7 +143,7 @@ Also, if you have used AndTinder on your app and you let me know, I can link it 
 Contact
 --------------------
 
-Enrique López Mañas - <kidach1.tngc@gmail.com>
+kidach1 - <kidach1.tngc@gmail.com>
 
 License
 -------
