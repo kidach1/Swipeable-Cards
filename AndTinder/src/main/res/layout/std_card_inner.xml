@@ -123,6 +123,6 @@
         android:layout_alignParentRight="true"
         android:layout_gravity="right"
         android:alpha="0"
-        android:background="@drawable/dislike"/>
+        android:background="@drawable/nope"/>
 
 </RelativeLayout>
