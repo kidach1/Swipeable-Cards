@@ -9,15 +9,15 @@
     <TextView
         android:id="@+id/title"
         style="@android:style/TextAppearance.Large.Inverse"
-        android:textColor="@android:color/primary_text_light"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-condensed"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/card_bg"
-        tools:text="Title"
-        android:padding="10dp"/>
+        android:fontFamily="sans-serif-condensed"
+        android:padding="10dp"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="Title"/>
 
     <View
         android:id="@+id/divider_title"
@@ -31,8 +31,8 @@
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/divider_title"
         android:layout_alignWithParentIfMissing="true"
+        android:layout_below="@id/divider_title"
         android:scaleType="centerCrop"
         tools:src="@drawable/picture1"/>
 
@@ -41,7 +41,7 @@
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:layout_below="@id/image"
-        android:background="@color/card_outline" />
+        android:background="@color/card_outline"/>
 
     <View
         android:layout_width="fill_parent"
@@ -58,13 +58,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/image"
-        android:gravity="center_vertical"
-        android:fontFamily="sans-serif-condensed"
         android:ellipsize="end"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_vertical"
         android:padding="10dp"
         android:textColor="@android:color/secondary_text_light"
         tools:text="This is the description, it is a long description, as you can see"/>
 
+    <View
+        android:id="@+id/item_swipe_left_indicator"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:alpha="0"
+        android:background="@drawable/like"
+        />
 
+    <View
+        android:id="@+id/item_swipe_right_indicator"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="right"
+        android:alpha="0"
+        android:background="@drawable/like"/>
 
 </RelativeLayout>
+
