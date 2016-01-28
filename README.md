@@ -39,14 +39,6 @@ and in your settings.gradle
 include 'AndTinder'
 ```
 
-You can also download it via MavenCentral and Gradle:
-
-```groovy
-dependencies {
-   compile 'com.github.kidach1:SwipeableCards:1.1-RELEASE@aar'
-}
-```
-
 When you have included the library in your project, you need to proceeed as follows. First, create a container to store the cards.
 
 ```xml
