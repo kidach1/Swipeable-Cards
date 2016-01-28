@@ -156,7 +156,7 @@ License
 [4]: https://raw.github.com/kikoso/AndTinder/master/art/captura2.png
 [5]: https://github.com/Dr-Emann
 [6]: https://github.com/kikoso/Swipeable-Cards
-[7]: https://dl2.pushbulletusercontent.com/JPSSJP5AgZ8F0lJFqwcMIhj3wVT7B6Cf/Screenshot_2016-01-28-17-57-48.png
-[8]: https://dl2.pushbulletusercontent.com/wy8uZzIadnTdKhfKZNcJFGkF5lZOr2XO/Screenshot_2016-01-28-17-57-52.png
-[9]: https://dl2.pushbulletusercontent.com/bdb7HwQY3NXyswsOADtd5iz66x6Da9Mo/Screenshot_2016-01-28-17-57-38.png
-[10]: https://dl2.pushbulletusercontent.com/nzMjIyMBOXSCLNcijfLSaDVocnZuBhcv/Screenshot_2016-01-28-17-57-43.png
+[7]: https://qiita-image-store.s3.amazonaws.com/0/48274/a98bda2e-1ec6-73bb-4ffb-e6523ce67512.png
+[8]: https://qiita-image-store.s3.amazonaws.com/0/48274/5070f0de-3b6b-de1a-6338-9bbdca983f0c.png
+[9]: https://qiita-image-store.s3.amazonaws.com/0/48274/f90fb10f-7edb-a080-4ee9-337520b7e531.png
+[10]: https://qiita-image-store.s3.amazonaws.com/0/48274/1a650822-6f3c-3ed5-db09-ce403672e516.png
