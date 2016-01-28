@@ -1,11 +1,19 @@
 apply plugin: 'android'
+apply from: '../jacoco.gradle'
 
 android {
     compileSdkVersion 23
+<<<<<<< HEAD
     buildToolsVersion '23.0.1'
 
     defaultConfig {
         minSdkVersion 13
+=======
+    buildToolsVersion '23.0.2'
+
+    defaultConfig {
+        minSdkVersion 14
+>>>>>>> dc63618b4c9953954d7d1a396fb85c3c571f161d
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -13,13 +21,25 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            testCoverageEnabled = true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:19.+'
+    compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':AndTinder')
+
+    // Unit testing dependencies
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.2'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.2'
+    testCompile 'org.hamcrest:hamcrest-library:1.1'
+    testCompile 'com.openpojo:openpojo:0.8.0'
 }
