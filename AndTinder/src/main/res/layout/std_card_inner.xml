@@ -77,9 +77,10 @@
         android:id="@+id/item_swipe_right_indicator"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_alignParentRight="true"
         android:layout_gravity="right"
         android:alpha="0"
-        android:background="@drawable/like"/>
+        android:background="@drawable/dislike"/>
 
 </RelativeLayout>
 
