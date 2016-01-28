@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.support.v4.content.ContextCompat;
 
 import com.andtinder.R;
 import com.andtinder.model.CardModel;
@@ -44,7 +45,7 @@ public abstract class CardStackAdapter extends BaseCardStackAdapter {
 			wrapper.setBackgroundResource(R.drawable.card_bg);
 			if (shouldFillCardBackground()) {
 				innerWrapper = new FrameLayout(mContext);
-				innerWrapper.setBackgroundColor(mContext.getResources().getColor(R.color.card_bg));
+				innerWrapper.setBackgroundColor(ContextCompat.getColor(mContext, R.color.card_bg));
 				wrapper.addView(innerWrapper);
 			} else {
 				innerWrapper = wrapper;
