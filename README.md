@@ -1,13 +1,13 @@
 Fork of [Swipeable-Cards][6] for adding like or dislike image changing transparency depending on card rotation.
-=================
-
-Like
 --------------------
+
+### Like
+
 ![Example Image][7]
 ![Example Image][8]
 
-Dislike
---------------------
+### Dislike
+
 ![Example Image][9]
 ![Example Image][10]
 
