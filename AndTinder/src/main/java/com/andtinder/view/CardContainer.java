@@ -68,6 +68,7 @@ public class CardContainer extends AdapterView<ListAdapter> {
     private int mGravity;
     private int mNextAdapterPosition;
     private boolean mDragging;
+    private onSwipeListener mSwipeListener;
 
     public CardContainer(Context context) {
         super(context);
@@ -107,6 +108,10 @@ public class CardContainer extends AdapterView<ListAdapter> {
         setOrientation(Orientation.fromIndex(orientation));
 
         a.recycle();
+    }
+
+    public void setOnSwipeListener(onSwipeListener onSwipeListener) {
+        this.mSwipeListener = onSwipeListener;
     }
 
     @Override
@@ -184,7 +189,9 @@ public class CardContainer extends AdapterView<ListAdapter> {
     }
 
     private float getDisorderedRotation() {
-        return (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS);
+        // 最初の自動配置時の傾き
+//        return (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS);
+        return (float) Math.toDegrees(0);
     }
 
     @Override
@@ -237,6 +244,47 @@ public class CardContainer extends AdapterView<ListAdapter> {
             Gravity.apply(mGravity, w, h, boundsRect, childRect);
             view.layout(childRect.left, childRect.top, childRect.right, childRect.bottom);
         }
+    }
+
+    private float getScrollProgressPercent() {
+        if (movedBeyondLeftBorder()) {
+            return -1f;
+        } else if (movedBeyondRightBorder()) {
+            return 1f;
+        } else {
+            float aPosX = mTopCard.getX();
+            float halfWidth = mTopCard.getWidth() / 2f;
+
+            float zeroToOneValue = (aPosX + halfWidth - leftBorder()) / (rightBorder() - leftBorder());
+            return zeroToOneValue * 2f - 1f;
+        }
+    }
+
+    private boolean movedBeyondLeftBorder() {
+        float aPosX = mTopCard.getX();
+        float halfWidth = mTopCard.getWidth() / 2f;
+
+        return aPosX + halfWidth < leftBorder();
+    }
+
+    private boolean movedBeyondRightBorder() {
+        float aPosX = mTopCard.getX();
+        float halfWidth = mTopCard.getWidth() / 2f;
+
+        return aPosX + halfWidth > rightBorder();
+    }
+
+
+    public float leftBorder() {
+        float parentWidth = ((ViewGroup) mTopCard.getParent()).getWidth();
+
+        return parentWidth / 4.f;
+    }
+
+    public float rightBorder() {
+        float parentWidth = ((ViewGroup) mTopCard.getParent()).getWidth();
+
+        return 3 * parentWidth / 4.f;
     }
 
     @Override
@@ -298,6 +346,9 @@ public class CardContainer extends AdapterView<ListAdapter> {
 
                 mLastTouchX = x;
                 mLastTouchY = y;
+
+                mSwipeListener.onSwipe(getScrollProgressPercent());
+
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
@@ -309,12 +360,17 @@ public class CardContainer extends AdapterView<ListAdapter> {
                 ValueAnimator animator = ObjectAnimator.ofPropertyValuesHolder(mTopCard,
                         PropertyValuesHolder.ofFloat("translationX", 0),
                         PropertyValuesHolder.ofFloat("translationY", 0),
-                        PropertyValuesHolder.ofFloat("rotation", (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS)),
+                        // 一度dragしたカードから手を離してstackに戻ってきた時の傾き
+//                        PropertyValuesHolder.ofFloat("rotation", (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS)),
+                        PropertyValuesHolder.ofFloat("rotation", (float) Math.toDegrees(0)),
                         PropertyValuesHolder.ofFloat("pivotX", mTopCard.getWidth() / 2.f),
                         PropertyValuesHolder.ofFloat("pivotY", mTopCard.getHeight() / 2.f)
                 ).setDuration(250);
                 animator.setInterpolator(new AccelerateInterpolator());
                 animator.start();
+
+                mSwipeListener.onSwipe(0);
+
                 break;
             case MotionEvent.ACTION_POINTER_UP:
                 pointerIndex = event.getActionIndex();
@@ -384,7 +440,7 @@ public class CardContainer extends AdapterView<ListAdapter> {
 
     @Override
     public View getSelectedView() {
-        throw new UnsupportedOperationException();
+        return mTopCard;
     }
 
     @Override
@@ -399,6 +455,8 @@ public class CardContainer extends AdapterView<ListAdapter> {
     public void setGravity(int gravity) {
         mGravity = gravity;
     }
+
+
 
     public static class LayoutParams extends ViewGroup.LayoutParams {
 
@@ -482,5 +540,9 @@ public class CardContainer extends AdapterView<ListAdapter> {
             } else
                 return false;
         }
+    }
+
+    public interface onSwipeListener {
+        void onSwipe(float scrollProgressPercent);
     }
 }

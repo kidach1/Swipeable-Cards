@@ -21,9 +21,9 @@ public abstract class CardStackAdapter extends BaseCardStackAdapter {
 	private final Object mLock = new Object();
 	private ArrayList<CardModel> mData;
 
-    private boolean mShouldFillCardBackground = false;
+	private boolean mShouldFillCardBackground = false;
 
-    public CardStackAdapter(Context context) {
+	public CardStackAdapter(Context context) {
 		mContext = context;
 		mData = new ArrayList<CardModel>();
 	}
@@ -70,15 +70,15 @@ public abstract class CardStackAdapter extends BaseCardStackAdapter {
 
 	protected abstract View getCardView(int position, CardModel model, View convertView, ViewGroup parent);
 
-    public void setShouldFillCardBackground(boolean isShouldFillCardBackground) {
-        this.mShouldFillCardBackground = isShouldFillCardBackground;
-    }
+	public void setShouldFillCardBackground(boolean isShouldFillCardBackground) {
+		this.mShouldFillCardBackground = isShouldFillCardBackground;
+	}
 
-    public boolean shouldFillCardBackground() {
-        return mShouldFillCardBackground;
-    }
+	public boolean shouldFillCardBackground() {
+		return mShouldFillCardBackground;
+	}
 
-    public void add(CardModel item) {
+	public void add(CardModel item) {
 		synchronized (mLock) {
 			mData.add(item);
 		}
