@@ -1,3 +1,16 @@
+Fork of [Swipeable-Cards][6] for adding like or dislike image changing transparency depending on card rotation.
+
+Like
+--------------------
+![Example Image][7]
+![Example Image][8]
+
+Dislike
+--------------------
+![Example Image][9]
+![Example Image][10]
+
+
 Swipeable cards: Tinder-like cards library for Android
 =================
 
@@ -29,7 +42,7 @@ You can also download it via MavenCentral and Gradle:
 
 ```groovy
 dependencies {
-   compile 'com.github.kikoso:SwipeableCards:1.1-RELEASE@aar'
+   compile 'com.github.kidach1:SwipeableCards:1.1-RELEASE@aar'
 }
 ```
 
@@ -118,7 +131,7 @@ Also, if you have used AndTinder on your app and you let me know, I can link it 
 Contact
 --------------------
 
-Enrique López Mañas - <eenriquelopez@gmail.com>
+Enrique López Mañas - <kidach1.tngc@gmail.com>
 
 License
 -------
@@ -137,21 +150,13 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
-
-<a href="https://twitter.com/eenriquelopez">
-  <img alt="Follow me on Twitter"
-       src="https://raw.github.com/kikoso/android-stackblur/master/art/twitter.png" />
-</a>
-<a href="https://plus.google.com/103250453274111396206">
-  <img alt="Follow me on Google+"
-       src="https://raw.github.com/kikoso/android-stackblur/master/art/google-plus.png" />
-</a>
-<a href="http://de.linkedin.com/pub/enrique-l%C3%B3pez-ma%C3%B1as/15/4a9/876">
-  <img alt="Follow me on LinkedIn"
-       src="https://raw.github.com/kikoso/android-stackblur/master/art/linkedin.png" />
-
 [1]: https://github.com/kikoso/AndTinder/tree/master/AndTinder
 [2]: https://github.com/kikoso/AndTinder/tree/master/AndTinderDemo
 [3]: https://raw.github.com/kikoso/AndTinder/master/art/captura1.png
 [4]: https://raw.github.com/kikoso/AndTinder/master/art/captura2.png
 [5]: https://github.com/Dr-Emann
+[6]: https://github.com/kikoso/Swipeable-Cards
+[7]: https://dl2.pushbulletusercontent.com/JPSSJP5AgZ8F0lJFqwcMIhj3wVT7B6Cf/Screenshot_2016-01-28-17-57-48.png
+[8]: https://dl2.pushbulletusercontent.com/wy8uZzIadnTdKhfKZNcJFGkF5lZOr2XO/Screenshot_2016-01-28-17-57-52.png
+[9]: https://dl2.pushbulletusercontent.com/bdb7HwQY3NXyswsOADtd5iz66x6Da9Mo/Screenshot_2016-01-28-17-57-38.png
+[10]: https://dl2.pushbulletusercontent.com/nzMjIyMBOXSCLNcijfLSaDVocnZuBhcv/Screenshot_2016-01-28-17-57-43.png
