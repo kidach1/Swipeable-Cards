@@ -109,17 +109,17 @@ Finally, use an adapter to link the cards and the container:
 SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
 adapter.add(new CardModel("Title1", "Description goes here", r.getDrawable(R.drawable.picture1)));
 mCardContainer.setAdapter(adapter);
-		mCardContainer.setOnSwipeListener(new CardContainer.onSwipeListener() {
-			@Override
-			public void onSwipe(float scrollProgressPercent) {
-				View view = mCardContainer.getSelectedView();
-				view.findViewById(R.id.item_swipe_right_indicator)
-						.setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
-				view.findViewById(R.id.item_swipe_left_indicator)
-						.setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
+mCardContainer.setOnSwipeListener(new CardContainer.onSwipeListener() {
+    @Override
+    public void onSwipe(float scrollProgressPercent) {
+        View view = mCardContainer.getSelectedView();
+        view.findViewById(R.id.item_swipe_right_indicator)
+                .setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
+        view.findViewById(R.id.item_swipe_left_indicator)
+                .setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
 
-			}
-		});
+    }
+});
 ```
 
 Version history
