@@ -347,8 +347,9 @@ public class CardContainer extends AdapterView<ListAdapter> {
                 mLastTouchX = x;
                 mLastTouchY = y;
 
-                mSwipeListener.onSwipe(getScrollProgressPercent());
-
+                if (mSwipeListener != null) {
+                    mSwipeListener.onSwipe(getScrollProgressPercent());
+                }
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
@@ -369,8 +370,9 @@ public class CardContainer extends AdapterView<ListAdapter> {
                 animator.setInterpolator(new AccelerateInterpolator());
                 animator.start();
 
-                mSwipeListener.onSwipe(0);
-
+                if (mSwipeListener != null) {
+                    mSwipeListener.onSwipe(0);
+                }
                 break;
             case MotionEvent.ACTION_POINTER_UP:
                 pointerIndex = event.getActionIndex();
