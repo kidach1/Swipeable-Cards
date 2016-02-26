@@ -3,10 +3,13 @@ apply plugin: 'com.android.library'
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:1.0.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+        classpath 'com.github.dcendents:android-maven-plugin:1.2'
     }
 }
 
@@ -47,4 +50,89 @@ dependencies {
     testCompile 'org.powermock:powermock-module-junit4:1.6.2'
     testCompile 'org.hamcrest:hamcrest-library:1.1'
     testCompile 'com.openpojo:openpojo:0.8.0'
+}
+
+
+
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+group = 'com.kidach1.android'
+version = '1.0.0'
+def siteUrl = 'https://github.com/kidach1/Swipeable-Cards'
+def gitUrl = 'https://github.com/kidach1/Swipeable-Cards.git'
+
+bintray {
+    user = bintray_user
+    key = bintray_api_key
+
+    configurations = ['archives'] //When uploading configuration files
+    pkg {
+        repo = 'maven'
+        name = 'Swipeable-Cards'
+        desc = 'More Tinder like swipe-card library'
+        websiteUrl = siteUrl
+        issueTrackerUrl = 'https://github.com/kidach1/Swipeable-Cards/issues'
+        vcsUrl = gitUrl
+        licenses = ['Apache-2.0']
+        labels = ['android']
+        publicDownloadNumbers = true
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'Swipeable-Cards'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'kidach1'
+                        name 'Daiki Taniguchi'
+                        email 'kidach1.tngc@gmail.com'
+                    }
+                }
+                scm {
+                    connection 'https://github.com/kidach1/Swipeable-Cards'
+                    developerConnection 'https://github.com/kidach1/Swipeable-Cards.git'
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+task findConventions << {
+    println project.getConvention()
 }
