@@ -37,6 +37,9 @@ android {
     lintOptions {
         abortOnError false
     }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
 }
 
 dependencies {
@@ -58,7 +61,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 group = 'com.kidach1.android'
-version = '1.0.1'
+version = '1.0.2'
 def siteUrl = 'https://github.com/kidach1/Swipeable-Cards'
 def gitUrl = 'https://github.com/kidach1/Swipeable-Cards.git'
 
